@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 					},
 					{
 						from: /Version:.*$/m,
-						to: "Version:     <%= pkg.version %>"
+						to: "Version: <%= pkg.version %>"
 					},
 					{
 						from: /public \$version = \'.*.'/m,
