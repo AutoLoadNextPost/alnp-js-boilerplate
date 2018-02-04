@@ -1,4 +1,4 @@
-*** Auto Load Next Post JS Boilerplate ***
+*** Auto Load Next Post: JS Boilerplate ***
 
 5th January 2018 - Version 1.0.0
 * Initial release.
