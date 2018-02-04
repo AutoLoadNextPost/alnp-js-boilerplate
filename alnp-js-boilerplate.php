@@ -1,8 +1,8 @@
 <?php
 /*
  * Plugin Name: Auto Load Next Post: JS Boilerplate
- * Plugin URI:  https://github.com/AutoLoadNextPost/alnp-js-boilerplate
- * Version:     1.0.0
+ * Plugin URI: https://github.com/AutoLoadNextPost/alnp-js-boilerplate
+ * Version: 1.0.0
  * Description: Boilerplate for writing plugins for Auto Load Next Post JavaScript.
  * Author: Auto Load Next Post
  * Author URI: https://autoloadnextpost.com
@@ -167,7 +167,7 @@ if ( ! class_exists( 'ALNP_JS_Boilerplate' ) ) {
 		 */
 		public function alnp_enqueue_scripts() {
 			if ( is_singular() && get_post_type() == 'post' ) {
-				wp_register_script( 'alnp-js-boilerplate', $this->plugin_url() . '/assets/js/alnp-js-boilerplate.js', array( 'jquery' ), '1.0.0' );
+				wp_register_script( 'alnp-js-boilerplate', $this->plugin_url() . '/assets/js/alnp-js-boilerplate.js', array( 'jquery' ), self::$version );
 				wp_enqueue_script( 'alnp-js-boilerplate' );
 			}
 		} // END alnp_enqueue_scripts()
