@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Auto Load Next Post: JS Boilerplate
- * Plugin URI:  https://github.com/AutoLoadNextPost/alnp-js-boilerplate
+ * Plugin URI:  https://github.com/autoloadnextpost/alnp-js-boilerplate
  * Description: Boilerplate for writing plugins for Auto Load Next Post JavaScript.
  * Author: Auto Load Next Post
  * Author URI: https://autoloadnextpost.com
@@ -11,14 +11,14 @@
  * Text Domain: alnp-js-boilerplate
  * Domain Path: /languages/
  *
- * Copyright: © 2018 Sébastien Dumont
+ * Copyright: © 2019 Sébastien Dumont
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
  * @package   Auto Load Next Post: JS Boilerplate
  * @author    Auto Load Next Post
- * @copyright Copyright © 2018, Auto Load Next Post
+ * @copyright Copyright © 2019, Auto Load Next Post
  * @license   GNU General Public License v3.0 http://www.gnu.org/licenses/gpl-3.0.html
  */
 
@@ -47,9 +47,10 @@ if ( ! class_exists( 'ALNP_JS_Boilerplate' ) ) {
 		 * Required Auto Load Next Post Version
 		 *
 		 * @access public
+		 * @static
 		 * @since  1.0.0
 		 */
-		public $required_alnp = '1.4.8';
+		public static $required_alnp = '1.4.8';
 
 		/**
 		 * Main ALNP_JS_Boilerplate Instance.
@@ -121,7 +122,7 @@ if ( ! class_exists( 'ALNP_JS_Boilerplate' ) ) {
 		 * @return bool
 		 */
 		public function check_required_version() {
-			if ( ! defined( 'AUTO_LOAD_NEXT_POST_VERSION' ) || version_compare( AUTO_LOAD_NEXT_POST_VERSION, $this->required_alnp, '<' ) ) {
+			if ( ! defined( 'AUTO_LOAD_NEXT_POST_VERSION' ) || version_compare( AUTO_LOAD_NEXT_POST_VERSION, self::$equired_alnp, '<' ) ) {
 				add_action( 'admin_notices', array( $this, 'alnp_not_installed' ) );
 				return false;
 			}
@@ -135,12 +136,8 @@ if ( ! class_exists( 'ALNP_JS_Boilerplate' ) ) {
 		 * @return void
 		 */
 		public function alnp_not_installed() {
-			echo '<div class="error"><p>' . sprintf( __( 'Auto Load Next Post: JS Boilerplate requires $1%s v$2%s or higher to be installed.', 'alnp-js-boilerplate' ), '<a href="https://autoloadnextpost.com/" target="_blank">Auto Load Next Post</a>', $this->required_alnp ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( __( 'Auto Load Next Post: JS Boilerplate requires $1%s v$2%s or higher to be installed.', 'alnp-js-boilerplate' ), '<a href="https://autoloadnextpost.com/" target="_blank">Auto Load Next Post</a>', self::$required_alnp ) . '</p></div>';
 		} // END alnp_not_installed()
-
-		/*-----------------------------------------------------------------------------------*/
-		/*  Helper Functions                                                                 */
-		/*-----------------------------------------------------------------------------------*/
 
 		/**
 		 * Get the Plugin URL.
@@ -153,10 +150,6 @@ if ( ! class_exists( 'ALNP_JS_Boilerplate' ) ) {
 		public static function plugin_url() {
 			return plugins_url( basename( plugin_dir_path(__FILE__) ), basename( __FILE__ ) );
 		} // END plugin_url()
-
-		/*-----------------------------------------------------------------------------------*/
-		/*  Localization                                                                     */
-		/*-----------------------------------------------------------------------------------*/
 
 		/**
 		 * Make the plugin translation ready.
